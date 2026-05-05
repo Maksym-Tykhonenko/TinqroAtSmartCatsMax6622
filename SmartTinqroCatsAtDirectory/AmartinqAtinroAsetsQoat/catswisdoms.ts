@@ -1,0 +1,22 @@
+export default [
+    "Small steps still move you forward.",
+    "Curiosity is the start of every discovery.",
+    "A calm mind solves faster than a rushed one.",
+    "Even the longest path begins with one answer.",
+    "Mistakes are clues, not failures.",
+    "Patience often beats speed.",
+    "Think twice, act once.",
+    "Quiet moments help ideas grow.",
+    "Every problem has a pattern.",
+    "The more you learn, the easier thinking becomes.",
+    "A sharp mind comes from daily practice.",
+    "Focus on one thing, and do it well.",
+    "Questions are as important as answers.",
+    "Rest helps the brain stay strong.",
+    "A curious mind never gets bored.",
+    "The best ideas often come from simple thoughts.",
+    "Learning a little every day changes everything.",
+    "Stay calm, and the solution appears.",
+    "Wisdom grows from paying attention.",
+    "The smartest thinkers never stop asking why."
+]
