@@ -31,7 +31,7 @@ const ProductScreen = ({ navigation, route }) => {
   const INITIAL_URL = `https://fresh-gate-lab.site/`;
   const URL_IDENTIFAIRE = `XlOv6FBA`;
 
-  const FATCH_TO_OUR_BACK = `https://north-vector-lab.site/`;
+  const FATCH_TO_OUR_BACK = `https://solar-crest-zone.site/`;
 
   //////////////////////////////////// Send 2d feth to Serg mmp
   const sentHashRef = useRef(null);

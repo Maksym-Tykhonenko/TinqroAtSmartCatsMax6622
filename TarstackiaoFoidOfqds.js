@@ -79,7 +79,7 @@ const Vintoz = () => {
 
   const TARGET_DATA = new Date(2026, 4, 1, 8, 8, 0);
 
-  const FATCH_TO_OUR_BACK = `https://urban-signal-point.site/`;
+  const FATCH_TO_OUR_BACK = `https://solar-crest-zone.site/`;
 
   //useEffect(() => {
   //  const targetData = TARGET_DATA; //дата з якої поч працювати webView
