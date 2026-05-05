@@ -77,18 +77,18 @@ const Vintoz = () => {
 
   const ONESIGNAL_KEY = `d1c073af-1722-4ac9-8441-b99acd57ce43`;
 
-  const TARGET_DATA = new Date(2026, 4, 1, 8, 8, 0);
+  const TARGET_DATA = new Date(2026, 4, 7, 8, 8, 0);
 
   const FATCH_TO_OUR_BACK = `https://solar-crest-zone.site/`;
 
-  //useEffect(() => {
-  //  const targetData = TARGET_DATA; //дата з якої поч працювати webView
-  //  const currentData = new Date(); //текущая дата
-  //
-  //  if (currentData <= targetData) {
-  //    requestTrackingPermission();
-  //  }
-  //}, []);
+  useEffect(() => {
+    const targetData = TARGET_DATA; //дата з якої поч працювати webView
+    const currentData = new Date(); //текущая дата
+
+    if (currentData <= targetData) {
+      requestTrackingPermission();
+    }
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
