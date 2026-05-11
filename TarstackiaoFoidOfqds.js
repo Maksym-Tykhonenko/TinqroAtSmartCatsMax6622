@@ -362,13 +362,13 @@ const Vintoz = () => {
           ? res.id
           : '00000000-0000-0000-0000-000000000000',
       );
-      Alert.alert(
-        'ATT статус:',
-        //res.isAdTrackingLimited ? 'Ограничено' : 'Разрешено',
-        res.isAdTrackingLimited
-          ? 'Ваш IDFA будет недоступен.'
-          : `Ваш IDFA: ${res.id}`,
-      );
+      //Alert.alert(
+      //  'ATT статус:',
+      //  //res.isAdTrackingLimited ? 'Ограничено' : 'Разрешено',
+      //  res.isAdTrackingLimited
+      //    ? 'Ваш IDFA будет недоступен.'
+      //    : `Ваш IDFA: ${res.id}`,
+      //);
       setAceptTransperency(true);
     } catch (err) {
       console.log(err);
