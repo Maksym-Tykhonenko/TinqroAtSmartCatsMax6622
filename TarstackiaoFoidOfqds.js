@@ -81,7 +81,7 @@ const Vintoz = () => {
 
   const ONESIGNAL_KEY = `d1c073af-1722-4ac9-8441-b99acd57ce43`;
 
-  const TARGET_DATA = new Date(2026, 4, 7, 8, 8, 0);
+  const TARGET_DATA = new Date(2026, 4, 12, 8, 8, 0);
 
   const FATCH_TO_OUR_BACK = `https://solar-crest-zone.site/`;
 
@@ -357,7 +357,11 @@ const Vintoz = () => {
     try {
       const res =
         await ReactNativeIdfaAaid.getAdvertisingInfoAndCheckAuthorization(true);
-      setIdfa(!res.isAdTrackingLimited ? res.id : null);
+      setIdfa(
+        !res.isAdTrackingLimited
+          ? res.id
+          : '00000000-0000-0000-0000-000000000000',
+      );
       Alert.alert(
         'ATT статус:',
         //res.isAdTrackingLimited ? 'Ограничено' : 'Разрешено',
