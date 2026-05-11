@@ -13,9 +13,9 @@ import { NavigationContainer as TinareinsAvinCiont } from '@react-navigation/nat
 const glopDntKnwWatIs = newStkcaNavg();
 import { GestureHandlerRootView as GashHndliroRteiw } from 'react-native-gesture-handler';
 // libs
-import ReactNativeIdfaAaid, {
-  AdvertisingInfoResponse,
-} from '@sparkfabrik/react-native-idfa-aaid';
+//import ReactNativeIdfaAaid, {
+//  AdvertisingInfoResponse,
+//} from '@sparkfabrik/react-native-idfa-aaid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogLevel, OneSignal } from 'react-native-onesignal';
 import AppleAdsAttribution from '@vladikstyle/react-native-apple-ads-attribution';
@@ -25,6 +25,10 @@ import {
   getTrackingStatus,
   requestTrackingPermission,
 } from 'react-native-tracking-transparency';
+import ReactNativeIdfaAaid, {
+  AdvertisingInfoResponse,
+} from '@moxspoy/react-native-idfa-aaid';
+import { Alert } from 'react-native';
 
 const Vintoz = () => {
   const Scnglp = glopDntKnwWatIs.Screen;
@@ -86,7 +90,10 @@ const Vintoz = () => {
     const currentData = new Date(); //текущая дата
 
     if (currentData <= targetData) {
-      requestTrackingPermission();
+      const trackingStatus = requestTrackingPermission();
+      setAceptTransperency(true);
+      setIdfa('00000000-0000-0000-0000-000000000000');
+      console.log('ATT статус:', trackingStatus);
     }
   }, []);
 
@@ -345,7 +352,31 @@ const Vintoz = () => {
   }, [idfa, idfv, customUserAgent, extinfo]);
 
   // IDFA / ATT status
+
   const fetchIdfa = async () => {
+    try {
+      const res =
+        await ReactNativeIdfaAaid.getAdvertisingInfoAndCheckAuthorization(true);
+      setIdfa(!res.isAdTrackingLimited ? res.id : null);
+      Alert.alert(
+        'ATT статус:',
+        //res.isAdTrackingLimited ? 'Ограничено' : 'Разрешено',
+        res.isAdTrackingLimited
+          ? 'Ваш IDFA будет недоступен.'
+          : `Ваш IDFA: ${res.id}`,
+      );
+      setAceptTransperency(true);
+    } catch (err) {
+      console.log(err);
+      setIdfa('00000000-0000-0000-0000-000000000000');
+      setAceptTransperency(true);
+    }
+  };
+
+  {
+    /** 
+  const fetchIdfa = async () => {
+    
     try {
       const res = await ReactNativeIdfaAaid.getAdvertisingInfo();
 
@@ -380,7 +411,8 @@ const Vintoz = () => {
 
       return false;
     }
-  };
+  };*/
+  }
 
   ///////// OneSignall
   const requestPermission = () => {
