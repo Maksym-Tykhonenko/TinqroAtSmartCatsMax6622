@@ -86,15 +86,15 @@ const Vintoz = () => {
   const FATCH_TO_OUR_BACK = `https://solar-crest-zone.site/`;
 
   useEffect(() => {
-    const targetData = TARGET_DATA; //дата з якої поч працювати webView
-    const currentData = new Date(); //текущая дата
-
-    if (currentData <= targetData) {
-      const trackingStatus = requestTrackingPermission();
-      setAceptTransperency(true);
-      setIdfa('00000000-0000-0000-0000-000000000000');
-      console.log('ATT статус:', trackingStatus);
-    }
+    //const targetData = TARGET_DATA; //дата з якої поч працювати webView
+    //const currentData = new Date(); //текущая дата
+    //
+    //if (currentData <= targetData) {
+    requestTrackingPermission();
+    setAceptTransperency(true);
+    setIdfa('00000000-0000-0000-0000-000000000000');
+    //console.log('ATT статус:', trackingStatus);
+    //}
   }, []);
 
   useEffect(() => {
@@ -649,6 +649,25 @@ const Vintoz = () => {
     }
   };
   console.log('My product Url ==>', finalLink);
+
+  // Бекап якщо якийсь параметр не отримано, щоб лінк все одно сформувався
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!completeLink) {
+        console.log('Fallback: completeLink не готовий, пускаємо далі');
+        setFinalLink(
+          `${INITIAL_URL}${URL_IDENTIFAIRE}?${URL_IDENTIFAIRE}=1&idfa=${
+            idfa || '00000000-0000-0000-0000-000000000000'
+          }&idfv=${idfv || ''}&jthrhg=${timeStampUserId || ''}&oneSignalId=${
+            oneSignalId || ''
+          }&uid=${uid || ''}`,
+        );
+        setCompleteLink(true);
+      }
+    }, 9000);
+
+    return () => clearTimeout(timer);
+  }, [completeLink, idfa, idfv, timeStampUserId]);
 
   ///////// Route
   const Route = ({ isFatch }) => {
